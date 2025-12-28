@@ -1,19 +1,19 @@
 ---
 services:
   unifi-os-server:
-    image: ghcr.io/lemker/unifi-os-server:latest
+    image: uosserver:0.0.54
     container_name: unifi-os-server
     privileged: true
     environment:
-      - UOS_SYSTEM_IP=unifi.example.com
+      - UOS_SYSTEM_IP=192.168.1.116
     volumes:
-      - /path/to/unifi-os-server/persistent:/persistent
-      - /path/to/unifi-os-server/var-log:/var/log
-      - /path/to/unifi-os-server/data:/data
-      - /path/to/unifi-os-server/srv:/srv
-      - /path/to/unifi-os-server/var-lib-unifi:/var/lib/unifi
-      - /path/to/unifi-os-server/var-lib-mongodb:/var/lib/mongodb
-      - /path/to/unifi-os-server/etc-rabbitmq-ssl:/etc/rabbitmq/ssl
+      - ./docker/persistent:/persistent
+      - ./docker/var-log:/var/log
+      - ./docker/data:/data
+      - ./docker/srv:/srv
+      - ./docker/var-lib-unifi:/var/lib/unifi
+      - ./docker/var-lib-mongodb:/var/lib/mongodb
+      - ./docker/etc-rabbitmq-ssl:/etc/rabbitmq/ssl
     ports:
       - 11443:443
       - 5005:5005 # Optional
